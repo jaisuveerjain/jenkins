@@ -1,14 +1,15 @@
 pipeline {
-    agent any
 
     stages {
         stage('Clean') {
+            agent { label 'slave' }
             steps {
                 echo 'Data file is cleaned and sorted'
             }
         }
         
         stage('Deploy') {
+            agent { label 'master' }
             steps {
                 sh '''
                     #!/bin/bash
@@ -19,6 +20,7 @@ pipeline {
             }
         }
         stage('Test') {
+            agent { label 'slave' }
             steps {
                 sh '''
                     #!/bin/bash
@@ -30,6 +32,7 @@ pipeline {
             }
         }
         stage('Test Linux') {
+            agent { label 'master' }
             steps {
                 sh """
                     #!/bin/bash
