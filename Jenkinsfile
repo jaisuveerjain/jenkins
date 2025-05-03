@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Clean') {
-            agent { label 'slave' }
+            agent { label 'master' }
             steps {
                 echo 'Data file is cleaned and sorted'
                 python script.py
