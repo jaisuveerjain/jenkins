@@ -19,18 +19,33 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
-            agent { label 'slave' }
-            steps {
-                sh '''
-                    #!/bin/bash
-                    pwd
-                    ls -lrt
-                    sleep 10
-                '''
+        stage('TestALL'){
+            parallel {
+                stage('TestWindows') {
+                agent { label 'slave' }
+                steps {
+                    sh '''
+                        #!/bin/bash
+                        pwd
+                        ls -lrt
+                        sleep 10
+                    '''
+                }
+            }
+                stage('Test') {
+                agent { label 'slave' }
+                steps {
+                    sh '''
+                        #!/bin/bash
+                        pwd
+                        ls -lrt
+                        sleep 10
+                    '''
+                    }
+                }
             }
         }
-        stage('Test Linux') {
+        stage('Validate Results') {
             agent { label 'master' }
             steps {
                 sh """
