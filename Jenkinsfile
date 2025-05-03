@@ -18,6 +18,19 @@ pipeline {
                 '''
             }
         }
+         stage('Analyse') {
+            agent { label 'master' }
+            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                steps {
+                    sh '''
+                    echo 'Data file is cleaned and sorted'
+                    ls -lrt
+                    python3 --version
+                    exit 1
+                    '''
+                }
+            }
+        }
         
         stage('Deploy Preprod') {
             when {
