@@ -1,5 +1,5 @@
 pipeline {
-
+    agent none
     stages {
         stage('Clean') {
             agent { label 'slave' }
@@ -27,7 +27,6 @@ pipeline {
                     pwd
                     ls -lrt
                     sleep 10
-                    exit 1
                 '''
             }
         }
