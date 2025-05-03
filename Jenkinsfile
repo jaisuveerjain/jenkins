@@ -20,8 +20,8 @@ pipeline {
         }
          stage('Analyse') {
             agent { label 'master' }
-            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 steps {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh '''
                     echo 'Data file is cleaned and sorted'
                     ls -lrt
