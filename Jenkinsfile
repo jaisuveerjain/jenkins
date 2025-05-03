@@ -1,5 +1,11 @@
 pipeline {
     agent none
+    parameters{
+        string name: 'ENV_NAME',
+            defaultValue: 'UAT',
+            description: 'Input the environment to deploy'
+        
+    }
     stages {
         stage('Clean') {
             agent { label 'master' }
