@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy Preprod') {
             when {
                 expression{
-                    param.ENV_NAME == 'PREPROD'
+                    params.ENV_NAME == 'PREPROD'
                 }
             }
             agent { label 'master' }
@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy UAT') {
             when {
                 expression{
-                    param.ENV_NAME == 'UAT'
+                    params.ENV_NAME == 'UAT'
                 }
             }
             agent { label 'master' }
