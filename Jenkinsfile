@@ -15,7 +15,6 @@ pipeline {
                     #!/bin/bash
                     pwd
                     ls -lrt
-                    sleep 10
                 '''
             }
         }
@@ -26,9 +25,7 @@ pipeline {
                 steps {
                     sh '''
                         #!/bin/bash
-                        pwd
-                        ls -lrt
-                        sleep 10
+                        sleep 1
                     '''
                 }
             }
@@ -37,9 +34,7 @@ pipeline {
                 steps {
                     sh '''
                         #!/bin/bash
-                        pwd
-                        ls -lrt
-                        sleep 10
+                        sleep 1
                     '''
                     }
                 }
@@ -50,9 +45,7 @@ pipeline {
             steps {
                 sh """
                     #!/bin/bash
-                    pwd
-                    ls -lrt
-                    sleep 20
+                    sleep 1
                 """
             }
         }
