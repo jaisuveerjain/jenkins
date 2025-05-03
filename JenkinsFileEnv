@@ -1,0 +1,30 @@
+pipeline{
+	agent any
+	environment{
+		TEST = "THIS IS TEST ENV"
+	}
+	stages{
+	stage('First Stage'){
+		steps{
+			sh """
+				#!/bin/bash
+				ls -lrt
+				sleep 10
+				echo "My name is Jai"
+				echo $TEST
+			"""
+			}
+		}
+	stage('Second Stage'){
+		steps{
+			sh """
+				#!/bin/bash
+				ls -lrt
+				sleep 10
+				echo "My name is Suveer"
+				echo $TEST
+			"""
+			}
+		}
+	}
+}
