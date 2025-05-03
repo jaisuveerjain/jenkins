@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                echo 'Data file is cleaned'
+                echo 'Data file is cleaned and sorted'
             }
         }
         
@@ -14,7 +14,7 @@ pipeline {
                     #!/bin/bash
                     pwd
                     ls -lrt
-                    sleep 20
+                    sleep 10
                 '''
             }
         }
@@ -24,7 +24,8 @@ pipeline {
                     #!/bin/bash
                     pwd
                     ls -lrt
-                    sleep 20
+                    sleep 10
+                    exit 1
                 '''
             }
         }
