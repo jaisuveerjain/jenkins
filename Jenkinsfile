@@ -13,7 +13,27 @@ pipeline {
             }
         }
         
-        stage('Deploy') {
+        stage('Deploy Preprod') {
+            when {
+                expression{
+                    param.ENV_NAME == 'PREPROD'
+                }
+            }
+            agent { label 'master' }
+            steps {
+                sh '''
+                    #!/bin/bash
+                    pwd
+                    ls -lrt
+                '''
+            }
+        }
+        stage('Deploy UAT') {
+            when {
+                expression{
+                    param.ENV_NAME == 'UAT'
+                }
+            }
             agent { label 'master' }
             steps {
                 sh '''
