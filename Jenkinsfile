@@ -5,6 +5,7 @@ pipeline {
             agent { label 'slave' }
             steps {
                 echo 'Data file is cleaned and sorted'
+                python script.py
             }
         }
         
